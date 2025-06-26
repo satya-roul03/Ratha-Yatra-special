@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ratha Yatra Special</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffecd2, #fcb69f);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #800000;
+      font-size: 2em;
+      text-align: center;
+      animation: fadeInText 2s ease-in-out;
+    }
+
+    .image-container {
+      margin-top: 20px;
+      animation: fadeInImage 4s ease-in-out;
+    }
+
+    .image-container img {
+      width: 300px;
+      max-width: 90vw;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes fadeInText {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInImage {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    audio {
+      display: none;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9em;
+      color: #333;
+    }
+  </style>
+</head>
+<body onload="playAudio()">
+  <h1>🌼 ରଥଯାତ୍ରା ଶୁଭେଚ୍ଛା 🌼<br>Jai Jagannatha!🙏<br>⭕❗⭕</h1>
+
+  <div class="image-container">
+    <img src="jagannatha.jpeg" alt="Lord Jagannatha" />
+  </div>
+  🙏🙏🙏
+
+  <audio id="bgAudio" autoplay loop>
+    <source src="ahe-nila-saila.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <footer>Made by Satyajit Roul  <p>&copy; 2025 all right resolved</p></footer>
+
+  <script>
+    window.addEventListener("load", function () {
+      const audio = document.getElementById("bgAudio");
+      const playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // If autoplay blocked, ask user to tap
+          document.body.addEventListener("click", () => {
+            audio.play();
+          }, { once: true });
+
+          alert("🎶 Tap anywhere to start the devotional song.");
+        });
+      }
+    });
+  </script>
+</body>
+</html>
